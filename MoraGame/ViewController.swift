@@ -8,20 +8,22 @@
 
 import UIKit
 import GameKit
+import AVFoundation
 
 class ViewController: UIViewController {
-    let fists = ["剪刀", "石頭", "布"]
-    @IBOutlet weak var labelShowResult: UILabel!
-    @IBOutlet weak var labelPlayerScore: UILabel!
-    @IBOutlet weak var labelNPCScore: UILabel!
-    var playerScore = 0, npcScore = 0
-    var player = ""
-    var npcPlayer = ""
-    var playerPic = ""
-    var npcPic = ""
-    @IBOutlet weak var playerFistPic: UILabel!
-    @IBOutlet weak var npcFistPic: UILabel!
-    @IBOutlet weak var btnResetGame: UIButton!
+    let fists = ["剪刀", "石頭", "布"]//隨機用的拳
+    @IBOutlet weak var labelShowResult: UILabel!//顯示結果用的
+    @IBOutlet weak var labelPlayerScore: UILabel!//顯示玩家分數用的
+    @IBOutlet weak var labelNPCScore: UILabel!//顯示電腦分數用的
+    var playerScore = 0, npcScore = 0//一開始得分都是0分
+    var player = ""//玩家出的拳
+    var npcPlayer = ""//電腦出的拳
+    var playerPic = ""//玩家出拳的動畫用圖片字串
+    var npcPic = ""//電腦出拳的動畫用圖片字串
+    @IBOutlet weak var playerFistPic: UILabel!//連結StoryBoard的Label的控制項
+    @IBOutlet weak var npcFistPic: UILabel!//連結StoryBoard的Label的控制項
+    @IBOutlet weak var btnResetGame: UIButton!//連結StoryBoard的重新開始的控制項
+    @IBOutlet weak var langSwitch: UISegmentedControl!
     
     @IBAction func btnGameReset(_ sender: Any) {//reset game
         labelPlayerScore.text = "0"
@@ -112,6 +114,31 @@ class ViewController: UIViewController {
             self.npcFistPic.isHidden = false
             self.moveDown(view: self.npcFistPic)
         }
+        switch langSwitch.selectedSegmentIndex {
+        case 0://中文
+            let speechUtterance = AVSpeechUtterance(string: "剪刀, 石頭, 布")
+            speechUtterance.voice = AVSpeechSynthesisVoice(language: "zh-TW")
+            speechUtterance.rate = 0.59
+            let synth = AVSpeechSynthesizer()
+            synth.speak(speechUtterance)
+            break
+        case 1://英文
+            let speechUtterance = AVSpeechUtterance(string: "paper, Scissor, Stone")
+            speechUtterance.rate = 0.59
+            let synth = AVSpeechSynthesizer()
+            synth.speak(speechUtterance)
+            break
+        default:
+            let speechUtterance = AVSpeechUtterance(string: "最初はグー, ジャンケンポン")
+            speechUtterance.rate = 0.59
+            speechUtterance.volume = 9.0
+            speechUtterance.voice = AVSpeechSynthesisVoice(language: "ja-JP")
+            let synth = AVSpeechSynthesizer()
+            synth.speak(speechUtterance)
+            break
+            //日文
+        }
+        
         labelPlayerScore.text = "\(playerScore)"
         labelNPCScore.text = "\(npcScore)"
         labelShowResult.text = "玩家出:\(playerFists), 電腦出:\(npcPlayerFists) \n 所以是\(gameResult)"

@@ -127,6 +127,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LHm-pC-0tR">
+                                <rect key="frame" x="16" y="59" width="121" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="中文"/>
+                                    <segment title="En"/>
+                                    <segment title="あ"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="語言切換" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XN0-q7-KZE">
+                                <rect key="frame" x="49" y="35" width="54" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -136,6 +152,7 @@
                         <outlet property="labelNPCScore" destination="7KQ-I5-neD" id="KCN-vg-bUS"/>
                         <outlet property="labelPlayerScore" destination="DVt-fg-Ttq" id="Gl1-1w-UcJ"/>
                         <outlet property="labelShowResult" destination="NlC-4E-NWF" id="1wN-ah-Fuq"/>
+                        <outlet property="langSwitch" destination="LHm-pC-0tR" id="xm0-BM-cYS"/>
                         <outlet property="npcFistPic" destination="NEx-1m-zgc" id="4nc-Mw-hXT"/>
                         <outlet property="playerFistPic" destination="jzM-7o-ERh" id="7Po-LI-JPo"/>
                     </connections>
